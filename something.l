@@ -32,8 +32,8 @@ CLS             cls|clear|CLS|CLEAR
 {DIGIT}+        { printf("Number: %s\n", yytext); }
 {CLS}           { printf("\033[2J\033[H"); }
 {shantanu}      { printf("THATS YOU BRO\n");}   
-[\t\s]          { /* Ignore whitespace */ }
-.               { printf("Other shit\n"); }
+[ \t\n]          { /* Ignore whitespace */ }
+.              { printf("Other shit\n"); }
 
 %%
 

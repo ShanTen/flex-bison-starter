@@ -434,8 +434,8 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[36] =
     {   0,
-        0,    0,   13,   11,   10,   12,    3,    1,    2,    4,
-        7,   11,   11,   11,   10,    7,    0,    5,    0,    0,
+        0,    0,   13,   11,   10,   10,    3,    1,    2,    4,
+        7,   11,   11,   11,   11,    7,    0,    5,    0,    0,
         0,    6,    0,    8,    0,    0,    0,    0,    0,    0,
         0,    9,    0,    0,    0
     } ;
@@ -445,7 +445,7 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    2,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    4,    5,    1,    6,    1,    7,    8,    9,   10,
        10,   10,   10,   10,   10,   10,   10,   11,    1,    1,
        12,    1,    1,    1,   13,    1,   14,    1,   15,    1,
@@ -871,6 +871,7 @@ YY_RULE_SETUP
 { printf("THATS YOU BRO\n");}   
 	YY_BREAK
 case 10:
+/* rule 10 can match eol */
 YY_RULE_SETUP
 #line 35 "something.l"
 { /* Ignore whitespace */ }
@@ -885,7 +886,7 @@ YY_RULE_SETUP
 #line 38 "something.l"
 ECHO;
 	YY_BREAK
-#line 888 "lex.yy.c"
+#line 889 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
