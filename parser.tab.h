@@ -40,6 +40,23 @@
 extern int yydebug;
 #endif
 
+/* Tokens.  */
+#ifndef YYTOKENTYPE
+# define YYTOKENTYPE
+   /* Put the tokens into the symbol table, so that GDB and other debuggers
+      know about them.  */
+   enum yytokentype {
+     DIGIT = 258,
+     PLUS = 259,
+     MINUS = 260,
+     TIMES = 261,
+     DIVIDE = 262,
+     PARAN_OPEN = 263,
+     PARAN_CLOSE = 264,
+     COMB = 265,
+     PERM = 266
+   };
+#endif
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED

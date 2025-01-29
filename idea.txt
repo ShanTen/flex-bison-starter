@@ -1,0 +1,6 @@
+hmm ok so i want to make an inline calculator that handles bodmas 
+and also combinations and permutations that also handles expressions, exponents etc
+
+grammar: 
+    expression = > a + b
+    ?

@@ -3,43 +3,51 @@
     #include <stdio.h>
     #include <string.h>
     #include <stdlib.h>
+    #include "parser.tab.h"
 
-    void handleCombination(char * yytext)
+    typedef enum { false, true } bool;
+
+    void handlePermComb(char * yytext, bool isCombination)
     {
-        printf("Found nCr: %s\n", yytext); 
+        if(isCombination == true)
+            printf("Found nCr: %s\n", yytext); 
+        else
+            printf("Found nPr: %s\n", yytext); 
     }
 %}
 
 /* Definitions section: Regular expressions and definitions */
 
-DIGIT [0-9]+  
-shantanu        shantanu|shan10
-ADD             "+"
-SUB             "-"
-MUL             "*"
-DIV             "/"
-ASSIGN          ":="
-COMB            [0-9]+[Cc][0-9]+
-CLS             cls|clear|CLS|CLEAR
+DIGIT           [0-9]+
+PLUS             "+"
+MINUS             "-"
+TIMES             "*"
+DIVIDE             "/"
+/* COMB            [0-9]+[Cc][0-9]+
+PERM            [0-9 | ((.+))]+[Pp][0-9 | ((.+))]+ */
+COMB            [c | C]
+PERM            [p | P]
+PARAN_OPEN      "("
+PARAN_CLOSE     ")"
 %%
 
-{ADD}           { printf("Plus Operator\n"); }
-{SUB}           { printf("Minus Operator\n"); }
-{MUL}           { printf("Multiplication Operator\n"); }
-{DIV}           { printf("Division Operator\n"); }
-{ASSIGN}        { printf("Assignment Operator\n"); }
-{COMB}          { handleCombination(yytext); }
-{DIGIT}+        { printf("Number: %s\n", yytext); }
-{CLS}           { printf("\033[2J\033[H"); }
-{shantanu}      { printf("THATS YOU BRO\n");}   
-[ \t\n]          { /* Ignore whitespace */ }
-.              { printf("Other shit\n"); }
+{PLUS}          { return PLUS; }
+{MINUS}         { return MINUS; }
+{TIMES}         { return TIMES; }
+{DIVIDE}        { return DIVIDE; }
+{COMB}          { return COMB; }
+{PERM}          { return PERM; }
+{PARAN_OPEN}    { return PARAN_OPEN; }
+{PARAN_CLOSE}   { return PARAN_CLOSE; }
+{DIGIT}+        { return DIGIT; }
+[ \t\n]         { /* Ignore whitespace */ }
+.               { printf("Idk what that is chat\n"); }
 
 %%
 
 /* User code section: Additional C/C++ code */
 
-int main() {
+int not_main() {
     printf("Start typing!\n");
     yylex();  // Start scanning
     return 0;

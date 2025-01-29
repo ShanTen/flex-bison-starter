@@ -7,6 +7,11 @@ int yylex(void);
 
 %}
 
+%token  DIGIT
+%token  PLUS MINUS TIMES DIVIDE
+%token  PARAN_OPEN PARAN_CLOSE
+%token  COMB PERM
+
 %start program
 
 %%

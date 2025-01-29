@@ -1,3 +1,16 @@
+Terminals unused in grammar
+
+   DIGIT
+   PLUS
+   MINUS
+   TIMES
+   DIVIDE
+   PARAN_OPEN
+   PARAN_CLOSE
+   COMB
+   PERM
+
+
 Grammar
 
     0 $accept: program $end
@@ -9,13 +22,22 @@ Terminals, with rules where they appear
 
 $end (0) 0
 error (256)
+DIGIT (258)
+PLUS (259)
+MINUS (260)
+TIMES (261)
+DIVIDE (262)
+PARAN_OPEN (263)
+PARAN_CLOSE (264)
+COMB (265)
+PERM (266)
 
 
 Nonterminals, with rules where they appear
 
-$accept (3)
+$accept (12)
     on left: 0
-program (4)
+program (13)
     on left: 1, on right: 0
 
 
